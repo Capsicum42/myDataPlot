@@ -1,18 +1,25 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { ClarityModule } from "@clr/angular";
+import {HttpClientModule} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
+import { DataService } from './data.service';
+import { HeatmapComponent } from './heatmap/heatmap.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeatmapComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    ClarityModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
