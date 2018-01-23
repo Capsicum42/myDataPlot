@@ -21,12 +21,14 @@
       "styles": [
         "styles.css",
         "../node_modules/@clr/icons/clr-icons.min.css",
-        "../node_modules/@clr/ui/clr-ui.min.css"    
+        "../node_modules/@clr/ui/clr-ui.min.css",
+        "../node_modules/angular-calendar/css/angular-calendar.css"    
       ],
       "scripts": [
         "../node_modules/@clr/icons/clr-icons.min.js",
         "../node_modules/moment/moment.js",
-        "../node_modules/lokijs/src/lokijs.js"
+        "../node_modules/lokijs/src/lokijs.js",
+        "../node_modules/lokijs/src/loki-indexed-adapter.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

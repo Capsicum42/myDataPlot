@@ -1,0 +1,35 @@
+
+
+  <section class="form-block">
+   <div class="form-group">
+    Date Time:
+    <input [owlDateTimeTrigger]="dt" [owlDateTime]="dt">
+    <owl-date-time #dt></owl-date-time>
+    </div>
+  </section>
+
+
+<div *ngIf="clickedDate" class="alert alert-danger">
+  <div class="alert-items">
+    <div class="alert-item static">
+      <div class="alert-icon-wrapper">
+        <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+      </div>
+      <span class="alert-text">
+        <strong >You clicked on this day: {{ clickedDate | date:'medium' }}</strong>
+      </span>
+    </div>
+  </div>
+  <button type="button" class="close" aria-label="Close">
+      <clr-icon aria-hidden="true" shape="close"></clr-icon>
+  </button>
+</div>
+
+<div [ngSwitch]="view">
+  <mwl-calendar-month-view *ngSwitchCase="'month'" [viewDate]="viewDate" [events]="events" (dayClicked)="clickedDate = $event.day.date">
+  </mwl-calendar-month-view>
+  <mwl-calendar-week-view *ngSwitchCase="'week'" [viewDate]="viewDate" [events]="events" (dayHeaderClicked)="clickedDate = $event.day.date">
+  </mwl-calendar-week-view>
+  <mwl-calendar-day-view *ngSwitchCase="'day'" [viewDate]="viewDate" [events]="events">
+  </mwl-calendar-day-view>
+</div>

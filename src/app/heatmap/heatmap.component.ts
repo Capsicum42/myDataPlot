@@ -20,6 +20,15 @@ export class HeatmapComponent implements OnInit {
   xDataArray:any
   yDataArray:any
   zDataArray:any
+  
+  raumDataArray:any
+  aussenDataArray:any
+  heizkoerperDataArray:any
+  vorlaufDataArray:any
+  ruecklaufDataArray:any
+
+  myData;
+  myOptions;
 
   heute1 = moment('2017-01-01').format("YYYY-MM-DD");
   heute = moment(this.heute1);
@@ -32,32 +41,163 @@ export class HeatmapComponent implements OnInit {
 
 
   ngOnInit() {
-  /*  this.xDataArray=[];
+    this.xDataArray=[];
     this.yDataArray=[];
     this.zDataArray=[];
+
+    this.raumDataArray=[];
+    this.aussenDataArray=[];
+    this.heizkoerperDataArray=[];
+    this.vorlaufDataArray=[];
+    this.ruecklaufDataArray=[];
+
+
+    this.myData = [
+      {
+        z: this.zDataArray,
+        x: this.xDataArray,
+        y: this.yDataArray,
+        type: 'heatmap'
+        
+      }
+    ];
+    
+   // Plotly.plot('myDiv', this.myData);
  
-    this.dataService.fetchDay('2017-12-12').subscribe(data => {
-    let results = data['feeds'];
+    this.dataService.currentData$.subscribe(data => {
+    if(data==null)
+       return;
+    let width = document.getElementById('myDiv').offsetWidth;
+    let height= width=0.6;
+
+    let results = data;
+
+    //console.log(results);
     
     for (let e of results) {
         let created_at=moment(e.created_at);
-        this.xDataArray.push(moment(created_at).format('HH'));
-        this.yDataArray.push(moment(created_at).format('mm'));
-        this.zDataArray.push(Number(e.field5))  //Raum
-        };
+        this.xDataArray.push(moment(created_at).format('YYYY-MM-DD HH:00'));
+        //this.xDataArray.push(e.entry_id);
+        this.yDataArray.push(e.minute);
+         
+        this.raumDataArray.push(e.raum);
+        this.aussenDataArray.push(e.aussen);
+        this.heizkoerperDataArray.push(e.heizkoerper);
+        this.vorlaufDataArray.push(e.vorlauf);
+        this.ruecklaufDataArray.push(e.ruecklauf);
 
-        let myData = [
+
+        this.zDataArray=this.aussenDataArray;  //Raum
+        };
+        
+        this.myData=[];
+
+        this.myData = [
           {
             z: this.zDataArray,
             x: this.xDataArray,
             y: this.yDataArray,
-            type: 'heatmap'
-          }
+            type: 'contour',
+            autoscale:false,
+            zsmooth:false,
+            colorscale: 'Electric',
+            connectgaps: true,
+            
+           }
         ];
+
+        this.myOptions= {
+          xaxis: {type: 'date',
+          autorange: true},
+     //     height:hight,
+     //     width:width
+          
+        }
+
+        //console.log(this.myData);
+
+        Plotly.newPlot('myDiv',this.myData,this.myOptions);
+
         
-        Plotly.plot('myDiv', myData);
-        
-      })*/
+      })
   }
+
+  plotRaum() {
+    this.zDataArray=this.raumDataArray;
+    this.myData = [
+      {
+        z: this.zDataArray,
+        x: this.xDataArray,
+        y: this.yDataArray,
+        //type: 'heatmap',
+        type: 'contour',
+        colorscale: 'Portland',
+       }
+    ];
+
+    Plotly.newPlot('myDiv',this.myData,this.myOptions);
+   }
+
+   plotVorlauf() {
+    this.zDataArray=this.vorlaufDataArray;
+    this.myData = [
+      {
+        z: this.zDataArray,
+        x: this.xDataArray,
+        y: this.yDataArray,
+        type: 'heatmap',
+        colorscale: 'Portland',
+       }
+    ];
+
+    Plotly.newPlot('myDiv',this.myData,this.myOptions);
+   }
+   plotRuecklauf() {
+    this.zDataArray=this.ruecklaufDataArray;
+    this.myData = [
+      {
+        z: this.zDataArray,
+        x: this.xDataArray,
+        y: this.yDataArray,
+        //type: 'heatmap',
+        type: 'contour',
+        colorscale: 'Portland',
+       }
+    ];
+
+    Plotly.newPlot('myDiv',this.myData,this.myOptions);
+   }
+   plotHeizkoerper() {
+    this.zDataArray=this.heizkoerperDataArray;
+    this.myData = [
+      {
+        z: this.zDataArray,
+        x: this.xDataArray,
+        y: this.yDataArray,
+        //type: 'heatmap',
+        type: 'contour',
+        colorscale: 'Portland',
+       }
+    ];
+
+    Plotly.newPlot('myDiv',this.myData,this.myOptions);
+   }
+   plotAussen() {
+    this.zDataArray=this.aussenDataArray;
+    this.myData = [
+      {
+        z: this.zDataArray,
+        x: this.xDataArray,
+        y: this.yDataArray,
+        type: 'heatmap',
+        colorscale: 'Portland',
+       }
+    ];
+
+    Plotly.newPlot('myDiv',this.myData,this.myOptions);
+   }
+
+
+
 
 }
