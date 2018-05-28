@@ -1,32 +1,31 @@
 
 
-  <section class="form-block">
-   <div class="form-group">
-    Date Time:
-    <input [owlDateTimeTrigger]="dt" [owlDateTime]="dt">
-    <owl-date-time #dt></owl-date-time>
-    </div>
-  </section>
+<p>Example of the range selection</p>
 
+<ngb-datepicker #dp ngModel (ngModelChange)="onDateChange($event)" [displayMonths]="2" [dayTemplate]="t">
+</ngb-datepicker>
 
-<div *ngIf="clickedDate" class="alert alert-danger">
-  <div class="alert-items">
-    <div class="alert-item static">
-      <div class="alert-icon-wrapper">
-        <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
-      </div>
-      <span class="alert-text">
-        <strong >You clicked on this day: {{ clickedDate | date:'medium' }}</strong>
-      </span>
-    </div>
-  </div>
-  <button type="button" class="close" aria-label="Close">
-      <clr-icon aria-hidden="true" shape="close"></clr-icon>
-  </button>
-</div>
+<ng-template #t let-date="date" let-focused="focused">
+  <span class="custom-day"
+        [class.focused]="focused"
+        [class.range]="isFrom(date) || isTo(date) || isInside(date) || isHovered(date)"
+        [class.faded]="isHovered(date) || isInside(date)"
+        (mouseenter)="hoveredDate = date"
+        (mouseleave)="hoveredDate = null">
+    {{ date.day }}
+  </span>
+</ng-template>
+<button class="btn btn-primary" (click)="newDates()">Neu</button>
+<button class="btn btn-primary" (click)="addDates()">Hinzufügen</button>
+<button class="btn btn-primary" (click)="fastFetchDates()">FastFetch</button>
+<hr>
+<app-heatmap></app-heatmap>
+
+<ngb-alert *ngIf="successMessage" type="success" (close)="successMessage = null">{{ successMessage }}</ngb-alert>
 
 <div [ngSwitch]="view">
-  <mwl-calendar-month-view *ngSwitchCase="'month'" [viewDate]="viewDate" [events]="events" (dayClicked)="clickedDate = $event.day.date">
+
+  <mwl-calendar-month-view *ngSwitchCase="'month'" [viewDate]="viewDate" [events]="events" (dayClicked)="dayClicked($event)">
   </mwl-calendar-month-view>
   <mwl-calendar-week-view *ngSwitchCase="'week'" [viewDate]="viewDate" [events]="events" (dayHeaderClicked)="clickedDate = $event.day.date">
   </mwl-calendar-week-view>

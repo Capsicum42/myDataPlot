@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,Input, OnInit } from '@angular/core';
 
 import { DataService} from '../data.service'
 
@@ -17,9 +17,12 @@ declare var Plotly:any;
 })
 export class HeatmapComponent implements OnInit {
 
+
   xDataArray:any
   yDataArray:any
   zDataArray:any
+
+  traces:any;
   
   raumDataArray:any
   aussenDataArray:any
@@ -41,6 +44,7 @@ export class HeatmapComponent implements OnInit {
 
 
   ngOnInit() {
+    
     this.xDataArray=[];
     this.yDataArray=[];
     this.zDataArray=[];
@@ -50,6 +54,8 @@ export class HeatmapComponent implements OnInit {
     this.heizkoerperDataArray=[];
     this.vorlaufDataArray=[];
     this.ruecklaufDataArray=[];
+
+    
 
 
     this.myData = [
@@ -63,6 +69,24 @@ export class HeatmapComponent implements OnInit {
     ];
     
    // Plotly.plot('myDiv', this.myData);
+
+   this.dataService.currentCommand$.subscribe(data => {
+   if (data=="reset") {
+    this.xDataArray=[];
+    this.yDataArray=[];
+    this.zDataArray=[];
+
+    this.raumDataArray=[];
+    this.aussenDataArray=[];
+    this.heizkoerperDataArray=[];
+    this.vorlaufDataArray=[];
+    this.ruecklaufDataArray=[];
+   }
+
+  })
+
+
+
  
     this.dataService.currentData$.subscribe(data => {
     if(data==null)
@@ -72,7 +96,8 @@ export class HeatmapComponent implements OnInit {
 
     let results = data;
 
-    //console.log(results);
+    console.log("Heatmap Start");
+    console.log(results.length);
     
     for (let e of results) {
         let created_at=moment(e.created_at);
@@ -97,11 +122,12 @@ export class HeatmapComponent implements OnInit {
             z: this.zDataArray,
             x: this.xDataArray,
             y: this.yDataArray,
-            type: 'contour',
-            autoscale:false,
+            type: 'heatmap',
+            autoscale:true,
             zsmooth:false,
-            colorscale: 'Electric',
-            connectgaps: true,
+            //colorscale: 'Electric',
+            colorscale: 'Portland',
+            connectgaps: false,
             
            }
         ];
@@ -129,8 +155,7 @@ export class HeatmapComponent implements OnInit {
         z: this.zDataArray,
         x: this.xDataArray,
         y: this.yDataArray,
-        //type: 'heatmap',
-        type: 'contour',
+        type: 'heatmap',
         colorscale: 'Portland',
        }
     ];
@@ -159,8 +184,7 @@ export class HeatmapComponent implements OnInit {
         z: this.zDataArray,
         x: this.xDataArray,
         y: this.yDataArray,
-        //type: 'heatmap',
-        type: 'contour',
+        type: 'heatmap',
         colorscale: 'Portland',
        }
     ];
@@ -174,8 +198,7 @@ export class HeatmapComponent implements OnInit {
         z: this.zDataArray,
         x: this.xDataArray,
         y: this.yDataArray,
-        //type: 'heatmap',
-        type: 'contour',
+        type: 'heatmap',
         colorscale: 'Portland',
        }
     ];

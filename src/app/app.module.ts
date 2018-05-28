@@ -6,6 +6,7 @@ import { ClarityModule } from "@clr/angular";
 import {HttpClientModule} from '@angular/common/http';
 import { CalendarModule } from 'angular-calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 
 
 import { AppComponent } from './app.component';
@@ -28,6 +29,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     OwlDateTimeModule, 
     OwlNativeDateTimeModule,
     CommonModule,
+    FormsModule,
    // ClarityModule.forRoot(),
     NgbModule.forRoot(),
     BrowserAnimationsModule,

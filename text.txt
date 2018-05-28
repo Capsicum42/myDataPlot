@@ -1,2 +1,155 @@
  @angular-devkit/schematics  0.0.42  →  0.0.51
  @angular-devkit/core        0.0.23  →  0.0.28
+
+
+
+         "../node_modules/@clr/icons/clr-icons.min.css",
+        "../node_modules/@clr/ui/clr-ui.min.css",
+
+
+
+          "private": true,
+  "dependencies": {
+    "@angular/animations": "^5.2.1",
+    "@angular/common": "^5.2.1",
+    "@angular/compiler": "^5.2.1",
+    "@angular/core": "^5.2.1",
+    "@angular/forms": "^5.2.1",
+    "@angular/http": "^5.2.1",
+    "@angular/platform-browser": "^5.2.1",
+    "@angular/platform-browser-dynamic": "^5.2.1",
+    "@angular/router": "^5.2.1",
+    "@ng-bootstrap/ng-bootstrap": "^1.0.0-beta.9",
+    "angular-calendar": "^0.23.2",
+    "core-js": "^2.5.3",
+    "lokijs": "^1.5.1",
+    "moment": "^2.20.1",
+    "moment-timezone": "^0.5.14",
+    "ng-pick-datetime": "^5.1.0",
+    "rxjs": "^5.5.6",
+    "zone.js": "^0.8.20"
+  },
+
+
+
+  /*   this.insertDayDatabase('2017-07-01');
+        this.insertDayDatabase('2017-07-02');
+        this.insertDayDatabase('2017-07-03');
+        this.insertDayDatabase('2017-07-04');
+        this.insertDayDatabase('2017-07-05');
+        this.insertDayDatabase('2017-07-06');
+        this.insertDayDatabase('2017-07-07');
+        this.insertDayDatabase('2017-07-08');
+        this.insertDayDatabase('2017-07-09');
+        this.insertDayDatabase('2017-07-10');
+        this.insertDayDatabase('2017-07-11');
+        this.insertDayDatabase('2017-07-12');
+        this.insertDayDatabase('2017-07-13');
+        this.insertDayDatabase('2017-07-14');*/
+
+
+        /*this.insertDayDatabase('2017-10-15');
+        this.insertDayDatabase('2017-10-16');
+        this.insertDayDatabase('2017-10-17');
+        this.insertDayDatabase('2017-10-18');
+        this.insertDayDatabase('2017-10-19');
+        this.insertDayDatabase('2017-10-20');
+        this.insertDayDatabase('2017-10-21');
+        this.insertDayDatabase('2017-10-22');
+        this.insertDayDatabase('2017-10-23');
+        this.insertDayDatabase('2017-10-24');
+        this.insertDayDatabase('2017-10-25');
+        this.insertDayDatabase('2017-10-26');
+        this.insertDayDatabase('2017-10-27');
+        this.insertDayDatabase('2017-10-28');
+        this.insertDayDatabase('2017-10-29');
+        this.insertDayDatabase('2017-10-30');
+        this.insertDayDatabase('2017-10-31');*/
+
+
+
+    /*    this.insertDayDatabase('2017-11-01');
+        this.insertDayDatabase('2017-11-02');
+        this.insertDayDatabase('2017-11-03');
+        this.insertDayDatabase('2017-11-04');
+        this.insertDayDatabase('2017-11-05');
+        this.insertDayDatabase('2017-11-06');
+        this.insertDayDatabase('2017-11-07');
+        this.insertDayDatabase('2017-11-08');
+        this.insertDayDatabase('2017-11-09');
+        this.insertDayDatabase('2017-11-10');
+        this.insertDayDatabase('2017-11-11');
+        this.insertDayDatabase('2017-11-12');
+        this.insertDayDatabase('2017-11-13');
+        this.insertDayDatabase('2017-11-14');
+        this.insertDayDatabase('2017-11-15');
+        this.insertDayDatabase('2017-11-16');
+        this.insertDayDatabase('2017-11-17');
+        this.insertDayDatabase('2017-11-18');
+        this.insertDayDatabase('2017-11-19');
+        this.insertDayDatabase('2017-11-20');
+        
+        this.insertDayDatabase('2017-11-21');
+        this.insertDayDatabase('2017-11-22');
+        this.insertDayDatabase('2017-11-23');
+        this.insertDayDatabase('2017-11-24');
+        this.insertDayDatabase('2017-11-25');
+        this.insertDayDatabase('2017-11-26');
+        this.insertDayDatabase('2017-11-27');
+        this.insertDayDatabase('2017-11-28');
+        this.insertDayDatabase('2017-11-29');
+        this.insertDayDatabase('2017-11-30');
+
+        this.insertDayDatabase('2017-12-01');
+        this.insertDayDatabase('2017-12-02');
+        this.insertDayDatabase('2017-12-03');
+        this.insertDayDatabase('2017-12-04');
+        this.insertDayDatabase('2017-12-05');
+        this.insertDayDatabase('2017-12-06');
+        this.insertDayDatabase('2017-12-07');
+        this.insertDayDatabase('2017-12-08');
+        this.insertDayDatabase('2017-12-09');
+        this.insertDayDatabase('2017-12-10');
+        this.insertDayDatabase('2017-12-11');
+        this.insertDayDatabase('2017-12-12');
+        this.insertDayDatabase('2017-12-13');
+        this.insertDayDatabase('2017-12-14');
+        this.insertDayDatabase('2017-12-15');
+        this.insertDayDatabase('2017-12-16');
+        this.insertDayDatabase('2017-12-17');
+        this.insertDayDatabase('2017-12-18');
+        this.insertDayDatabase('2017-12-19');
+        this.insertDayDatabase('2017-12-20');
+        this.insertDayDatabase('2017-12-21');
+        this.insertDayDatabase('2017-12-22');
+        this.insertDayDatabase('2017-12-23');
+        this.insertDayDatabase('2017-12-24');
+        this.insertDayDatabase('2017-12-25');
+        this.insertDayDatabase('2017-12-26');
+        this.insertDayDatabase('2017-12-27');
+        this.insertDayDatabase('2017-12-28');
+        this.insertDayDatabase('2017-12-29');
+        this.insertDayDatabase('2017-12-30');
+
+        this.insertDayDatabase('2017-12-31');
+        this.insertDayDatabase('2018-01-01');
+        this.insertDayDatabase('2018-01-02');
+        this.insertDayDatabase('2018-01-03');
+
+        this.insertDayDatabase('2018-01-04');
+        this.insertDayDatabase('2018-01-05');
+        this.insertDayDatabase('2018-01-06');
+        this.insertDayDatabase('2018-01-07');
+        this.insertDayDatabase('2018-01-08');
+        this.insertDayDatabase('2018-01-09');
+        this.insertDayDatabase('2018-01-10');
+        this.insertDayDatabase('2018-01-11');
+        this.insertDayDatabase('2018-01-12');
+        this.insertDayDatabase('2018-01-13');
+        this.insertDayDatabase('2018-01-14');
+        this.insertDayDatabase('2018-01-15');
+        this.insertDayDatabase('2018-01-16');
+        this.insertDayDatabase('2018-01-17');
+        this.insertDayDatabase('2018-01-18');
+        this.insertDayDatabase('2018-01-19');
+        this.insertDayDatabase('2018-01-20'); */

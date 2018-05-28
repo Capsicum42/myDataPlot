@@ -1,4 +1,5 @@
 import { Component,OnInit } from '@angular/core';
+import { DataService} from './data.service'
 
 
 declare var moment:any
@@ -10,6 +11,20 @@ declare var moment:any
 })
 export class AppComponent implements OnInit {
   title = 'app';
+  
+  show:boolean = false;
+
+
+  constructor(
+    private dataService: DataService
+   ) {
+
+}
+  toggleCollapse() {
+    this.show = !this.show
+  }
+
+
 
   ngOnInit(){
 
